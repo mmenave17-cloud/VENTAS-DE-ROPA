@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | Venta De Ropa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* ===== Barra superior Wix ===== */
+        .wix-bar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #666;
+            position: relative;
+            z-index: 200;
+        }
+
+        .wix-bar a {
+            color: #116dff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .wix-start-btn {
+            background-color: #116dff;
+            color: white !important;
+            padding: 7px 18px;
+            border-radius: 4px;
+            text-decoration: none !important;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        /* ===== Header ===== */
+        header {
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #116dff;
+        }
+
+        .more-menu {
+            position: relative;
+            padding-right: 12px;
+        }
+
+        .more-menu::after {
+            content: "▾";
+            font-size: 12px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* ===== HERO con chica modelo ===== */
+        .hero {
+            position: relative;
+            height: 620px;
+            background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+
+        .btn-comprar {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #111;
+            padding: 14px 48px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            background-color: transparent;
+            color: #ffffff;
+        }
+
+        /* ===== Barra de envíos gratis ===== */
+        .shipping-bar {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* ===== Secciones de productos ===== */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 70px 30px;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            color: #111;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            background-color: #f5f5f5;
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            color: #222;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #777;
+            font-weight: 500;
+        }
+
+        .btn-ver {
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-ver a {
+            display: inline-block;
+            padding: 12px 45px;
+            border: 1px solid #111;
+            color: #111;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-ver a:hover {
+            background-color: #111;
+            color: #fff;
+        }
+
+        /* ===== Sección Oferta con fondo ===== */
+        .section-oferta {
+            background-color: #fafafa;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background-color: #111;
+            color: #aaa;
+            padding: 60px 30px 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            color: #fff;
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #222;
+            padding-top: 25px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero {
+                height: 420px;
+            }
+            .hero h1 {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+            .wix-bar {
+                font-size: 11px;
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .section {
+                padding: 45px 20px;
+            }
+            .section h2 {
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra superior Wix -->
+    <div class="wix-bar">
+        <span>Este sitio web fue creado con Wix. Crea el tuyo hoy mismo.</span>
+        <a href="#" class="wix-start-btn">Empezar</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">Chica Linda</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Oferta</a></li>
+                    <li><a href="#">Atención al cliente</a></li>
+                    <li><a href="#">Distribuidores</a></li>
+                    <li class="more-menu"><a href="#">More</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO con chica modelo -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Otoño &amp; Invierno</h1>
+            <a href="#" class="btn-comprar">Comprar</a>
+        </div>
+    </section>
+
+    <!-- Barra de envíos gratis -->
+    <div class="shipping-bar">
+        Envíos gratis a todo el mundo &nbsp;·&nbsp; Todo el año
+    </div>
+
+    <!-- ===== Sección: Los infaltables ===== -->
+    <section class="section">
+        <h2>Los Infaltables</h2>
+        <div class="products-grid">
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600"
+                     alt="Chaqueta de cuero">
+                <div class="product-name">Chaqueta de Cuero</div>
+                <div class="product-price">S/ 289.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600"
+                     alt="Cartera elegante">
+                <div class="product-name">Cartera Elegante</div>
+                <div class="product-price">S/ 159.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600"
+                     alt="Abrigo de invierno">
+                <div class="product-name">Abrigo de Invierno</div>
+                <div class="product-price">S/ 349.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600"
+                     alt="Bolso de mano">
+                <div class="product-name">Bolso de Mano</div>
+                <div class="product-price">S/ 199.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600"
+                     alt="Vestido de moda">
+                <div class="product-name">Vestido Casual</div>
+                <div class="product-price">S/ 179.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600"
+                     alt="Mochila de cuero">
+                <div class="product-name">Mochila de Cuero</div>
+                <div class="product-price">S/ 229.00</div>
+            </div>
+
+        </div>
+        <div class="btn-ver">
+            <a href="#">Ver Tienda</a>
+        </div>
+    </section>
+
+    <!-- ===== Sección: Oferta ===== -->
+    <section class="section section-oferta">
+        <h2>Oferta</h2>
+        <div class="products-grid">
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1520975954732-35dd22299614?w=600"
+                     alt="Blazer en oferta">
+                <div class="product-name">Blazer Elegante</div>
+                <div class="product-price"><s style="color:#bbb;">S/ 299</s> &nbsp; S/ 149.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=600"
+                     alt="Cartera de cuero">
+                <div class="product-name">Cartera de Cuero</div>
+                <div class="product-price"><s style="color:#bbb;">S/ 220</s> &nbsp; S/ 110.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600"
+                     alt="Conjunto de moda">
+                <div class="product-name">Conjunto Deportivo</div>
+                <div class="product-price"><s style="color:#bbb;">S/ 259</s> &nbsp; S/ 129.00</div>
+            </div>
+
+            <div class="product-card">
+                <img class="product-img"
+                     src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600"
+                     alt="Bolso pequeño">
+                <div class="product-name">Bolso Pequeño</div>
+                <div class="product-price"><s style="color:#bbb;">S/ 189</s> &nbsp; S/ 95.00</div>
+            </div>
+
+        </div>
+        <div class="btn-ver">
+            <a href="#">Ver Ofertas</a>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="footer-logo">CHICA LINDA</div>
+        <div class="footer-links">
+            <a href="#">Inicio</a>
+            <a href="#">Tienda</a>
+            <a href="#">Oferta</a>
+            <a href="#">Atención al cliente</a>
+            <a href="#">Distribuidores</a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2024 Chica Linda · Todos los derechos reservados
+        </div>
+    </footer>
+
+</body>
+</html>
